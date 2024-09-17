@@ -42,10 +42,6 @@ window.onload = function () {
     board.width = boardWidth;
     context = board.getContext("2d"); //used for drawing on the board
 
-    //draw flappy bird
-    // context.fillStyle = "green";
-    // context.fillRect(bird.x, bird.y, bird.width, bird.height);
-
     //load images
     birdImg = new Image();
     birdImg.src = "./flappybird.png";
@@ -59,10 +55,32 @@ window.onload = function () {
     bottomPipeImg = new Image();
     bottomPipeImg.src = "./bottompipe.png";
 
-    requestAnimationFrame(update);
-    setInterval(placePipes, 1750); //every 1.5 seconds
     document.addEventListener("keydown", moveBird);
     document.addEventListener("mousedown", moveBird); // Adiciona o event listener para o clique do mouse
+}
+
+function startGame(difficulty) {
+    let velocidadeDificuldade;
+
+    // Ajusta a velocidade do jogo com base na dificuldade selecionada
+    if (difficulty === 'easy') {
+        velocityX = -3.5
+        velocidadeDificuldade = 1500;
+    } else if (difficulty === 'medium') {
+        velocityX = -5;
+        velocidadeDificuldade = 900;
+    } else if (difficulty === 'hard') {
+        velocityX = -7;
+        velocidadeDificuldade = 800;
+    }
+
+    // Esconde a seleção de dificuldade e mostra o canvas
+    document.getElementById('difficulty-selection').style.display = 'none';
+    document.getElementById('board').style.display = 'block';
+
+    // Inicia o jogo
+    requestAnimationFrame(update);
+    setInterval(placePipes, velocidadeDificuldade); 
 }
 
 function update() {
@@ -74,7 +92,6 @@ function update() {
 
     //bird
     velocityY += gravity;
-    // bird.y += velocityY;
     bird.y = Math.max(bird.y + velocityY, 0); //apply gravity to current bird.y, limit the bird.y to top of the canvas
     context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
 

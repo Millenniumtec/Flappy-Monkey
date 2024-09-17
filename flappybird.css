@@ -1,12 +1,76 @@
 body {
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     text-align: center;
     margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("./flappyMenu.jpg"); /* Adiciona a imagem de fundo ao menu */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 #board {
-    /* background-color: skyblue; */
     background-image: url("./flappybirdbg.png");
     background-size: cover;
     height: 99.3vh;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra ao canvas */
+    border-radius: 10px; /* Adiciona bordas arredondadas ao canvas */
+}
+
+#difficulty-selection {
+    background-size: cover; /* Faz com que a imagem cubra todo o menu */
+    background-position: center; /* Centraliza a imagem de fundo */
+    padding: 30px; /* Adiciona um pouco de padding para espaçamento */
+    border-radius: 20px; /* Adiciona bordas arredondadas */
+    display: inline-block; /* Faz com que o menu ocupe apenas o espaço necessário */
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adiciona sombra ao menu */
+    color: white; /* Cor do texto */
+    font-family: 'Arial', sans-serif; /* Fonte mais moderna */
+    text-align: center; /* Centraliza o texto */
+    transition: transform 0.3s ease; /* Adiciona transição suave */
+}
+
+#difficulty-selection:hover {
+    transform: scale(1.05); /* Aumenta o tamanho do menu ao passar o mouse */
+}
+
+#difficulty-selection button {
+    font-size: 24px; /* Aumenta o tamanho da fonte */
+    padding: 15px 30px; /* Aumenta o padding */
+    margin: 15px;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Adiciona um fundo branco semi-transparente aos botões */
+    border: none; /* Remove a borda padrão dos botões */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra aos botões */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Adiciona transições suaves */
+}
+
+#difficulty-selection button:hover {
+    transform: scale(1.1); /* Aumenta o tamanho dos botões ao passar o mouse */
+}
+
+#difficulty-selection button:active {
+    transform: scale(1.05); /* Reduz ligeiramente o tamanho dos botões ao clicar */
+}
+
+#easy:hover{
+    background-color: rgb(42, 180, 0);
+    transform: scale(1.1);
+}
+
+#medium:hover{
+    background-color: rgb(240, 236, 1);
+    transform: scale(1.1);
+}
+
+#hard:hover{
+    background-color: rgb(201, 2, 2);
+    transform: scale(1.1);
 }

@@ -2,12 +2,18 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport", content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Flappy Bird</title>
         <link rel="stylesheet" href="flappybird.css">
         <script src="flappybird.js"></script>
     </head>
     <body>
-        <canvas id="board"></canvas>
+        <div id="difficulty-selection">
+            <h1>Selecione a Dificuldade</h1>
+            <button id="easy" onclick="startGame('easy')">Fácil</button>
+            <button id="medium" onclick="startGame('medium')">Médio</button>
+            <button id="hard" onclick="startGame('hard')">Difícil</button>
+        </div>
+        <canvas id="board" style="display: none;"></canvas>
     </body>
 </html>
