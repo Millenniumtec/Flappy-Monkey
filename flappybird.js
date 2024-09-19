@@ -168,7 +168,7 @@ function update() {
             // Toca o som de passagem de cano
             if (currentDifficulty === 'medium' || currentDifficulty === 'hard') {
                 // Aumenta a velocidade horizontal para cada cano passado
-                velocityX -= 0.025;
+                velocityX -= 0.005;
             }
         }
 
