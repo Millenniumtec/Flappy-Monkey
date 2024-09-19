@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@600&display=swap');
+
 body {
-    font-family: 'Courier New', Courier, monospace;
     text-align: center;
     margin: 0px;
     display: flex;
@@ -13,13 +14,16 @@ body {
 }
 
 #board {
-    background-image: url("./flappybirdbg.png");
+    font-family: 'Handjet', sans-serif;
+    background-image: url("backgroundDay.png");
     background-size: cover;
-    height: 99.3vh;
+    height: 96.3vh;
     display: block;
     margin: 0 auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra ao canvas */
-    border-radius: 10px; /* Adiciona bordas arredondadas ao canvas */
+    border-radius: 20px; /* Adiciona bordas arredondadas ao canvas */
+    border: 3px rgba(0, 0, 0, 0.5) solid;
+    box-shadow: 0 0px 10px rgb(0, 0, 0); /* Adiciona sombra ao canvas */
 }
 
 #difficulty-selection {
@@ -30,8 +34,9 @@ body {
     display: inline-block; /* Faz com que o menu ocupe apenas o espaço necessário */
     background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adiciona sombra ao menu */
-    color: white; /* Cor do texto */
-    font-family: 'Arial', sans-serif; /* Fonte mais moderna */
+    font-family: 'Handjet', sans-serif; /* Adiciona a fonte personalizada */
+    color: rgb(255, 255, 255); /* Cor do texto */
+    font-size: 30px;
     text-align: center; /* Centraliza o texto */
     transition: transform 0.3s ease; /* Adiciona transição suave */
 }
@@ -41,7 +46,8 @@ body {
 }
 
 #difficulty-selection button {
-    font-size: 24px; /* Aumenta o tamanho da fonte */
+    font-family: 'Handjet', sans-serif;
+    font-size: 30px; /* Aumenta o tamanho da fonte */
     padding: 15px 30px; /* Aumenta o padding */
     margin: 15px;
     cursor: pointer;
