@@ -53,13 +53,16 @@ let currentDifficulty = 'easy'; // Dificuldade atual
 
 // Carrega o áudio de colisão
 let collisionSound = new Audio('collision.mp3');
+collisionSound.volume = 0.2; // Define o volume do som de colisão
 
 // Carrega a música de fundo
 let backgroundMusic = new Audio('background-music.mp3');
 backgroundMusic.loop = true; // Define a música para tocar em loop
+backgroundMusic.volume = 0.2; // Define o volume da música
 
 // Carrega o som de passagem de cano
 let passPipeSound = new Audio('passPipe.mp3');
+passPipeSound.volume = 0.2; // Define o volume do som de passagem de cano
 
 window.onload = function () {
     board = document.getElementById("board");
@@ -101,12 +104,12 @@ function startGame(difficulty) {
     } else if (difficulty === 'medium') {
         velocityX = -5;
         defaultVelocityX = -5;
-        velocidadeDificuldade = 900;
+        velocidadeDificuldade = 1200;
         currentDifficulty = 'medium';
     } else if (difficulty === 'hard') {
-        velocityX = -7;
-        defaultVelocityX = -7;
-        velocidadeDificuldade = 800;
+        velocityX = -6;
+        defaultVelocityX = -6;
+        velocidadeDificuldade = 900;
         currentDifficulty = 'hard';
     }
 

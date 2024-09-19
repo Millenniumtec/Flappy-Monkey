@@ -24,6 +24,15 @@ body {
     border-radius: 20px; /* Adiciona bordas arredondadas ao canvas */
     border: 3px rgba(0, 0, 0, 0.5) solid;
     box-shadow: 0 0px 10px rgb(0, 0, 0); /* Adiciona sombra ao canvas */
+    touch-action: manipulation; /* Adiciona suporte para manipulação de toque */
+}
+
+#logo {
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    width: 10vw; /* Usa unidades de viewport para largura */
+    height: auto; /* Mantém a proporção da imagem */
 }
 
 #difficulty-selection {
