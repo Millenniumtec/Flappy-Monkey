@@ -4,10 +4,6 @@ let boardWidth = 360;
 let boardHeight = 640;
 let context;
 
-const FPS = 80;
-const frameDuration = 1000 / FPS;
-let lastFrameTime = 0;
-
 //bird
 let birdWidth = 70; //width/height ratio = 408/228 = 17/12
 let birdHeight = 70;
@@ -34,9 +30,9 @@ let bottomPipeImg;
 
 //backgrounds
 let backgroundDayImg = new Image();
-backgroundDayImg.src = 'backgroundDay.png';
+backgroundDayImg.src = 'images/backgroundDay.png';
 let backgroundNightImg = new Image();
-backgroundNightImg.src = 'backgroundNight.png';
+backgroundNightImg.src = 'images/backgroundNight.png';
 let currentBackground = backgroundDayImg; // Estado inicial do fundo
 let nextBackground = backgroundNightImg;
 let isTransitioning = false;
@@ -56,16 +52,17 @@ let highscoreHard = 0; // Recorde pessoal para dificuldade difícil
 let currentDifficulty = 'easy'; // Dificuldade atual
 
 // Carrega o áudio de colisão
-let collisionSound = new Audio('collision.mp3');
+let collisionSound = new Audio('sounds/collision.mp3');
+collisionSound.volume = 0.2; // Define o volume do som de colisão
 
 // Carrega a música de fundo
-let backgroundMusic = new Audio('background-music.mp3');
+let backgroundMusic = new Audio('sounds/background-music.mp3');
 backgroundMusic.loop = true; // Define a música para tocar em loop
+backgroundMusic.volume = 0.2; // Define o volume da música
 
 // Carrega o som de passagem de cano
-let passPipeSound = new Audio('passPipe.mp3');
-
-let lastTime = performance.now();
+let passPipeSound = new Audio('sounds/passPipe.mp3');
+passPipeSound.volume = 0.2; // Define o volume do som de passagem de cano
 
 window.onload = function () {
     board = document.getElementById("board");
@@ -80,16 +77,16 @@ window.onload = function () {
 
     //load images
     birdImg = new Image();
-    birdImg.src = "./flappybird.png";
+    birdImg.src = "images/flappybird.png";
     birdImg.onload = function () {
         context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
     }
 
     topPipeImg = new Image();
-    topPipeImg.src = "./toppipe.png";
+    topPipeImg.src = "images/toppipe.png";
 
     bottomPipeImg = new Image();
-    bottomPipeImg.src = "./bottompipe.png";
+    bottomPipeImg.src = "images/bottompipe.png";
 
     document.addEventListener("keydown", moveBird);
     document.addEventListener("mousedown", moveBird); // Adiciona o event listener para o clique do mouse
@@ -107,12 +104,12 @@ function startGame(difficulty) {
     } else if (difficulty === 'medium') {
         velocityX = -5;
         defaultVelocityX = -5;
-        velocidadeDificuldade = 900;
+        velocidadeDificuldade = 1200;
         currentDifficulty = 'medium';
     } else if (difficulty === 'hard') {
-        velocityX = -7;
-        defaultVelocityX = -7;
-        velocidadeDificuldade = 800;
+        velocityX = -6;
+        defaultVelocityX = -6;
+        velocidadeDificuldade = 900;
         currentDifficulty = 'hard';
     }
 
@@ -128,21 +125,11 @@ function startGame(difficulty) {
     setInterval(placePipes, velocidadeDificuldade); 
 }
 
-function update(currentTime) {
+function update() {
     requestAnimationFrame(update);
-
     if (gameOver) {
         return;
     }
-
-    const deltaTime = currentTime - lastFrameTime;
-
-    if (deltaTime < frameDuration) {
-        return;
-    }
-
-    lastFrameTime = currentTime;
-
     context.clearRect(0, 0, board.width, board.height);
 
     // Desenha o fundo atual
@@ -181,7 +168,7 @@ function update(currentTime) {
             // Toca o som de passagem de cano
             if (currentDifficulty === 'medium' || currentDifficulty === 'hard') {
                 // Aumenta a velocidade horizontal para cada cano passado
-                velocityX -= 0.025;
+                velocityX -= 0.05;
             }
         }
 
@@ -204,7 +191,7 @@ function update(currentTime) {
     context.strokeStyle = "black";
     context.strokeText(score, 170, 100);
     context.fillText(score, 170, 100);
-
+    
     //draw highscore
     let highscore;
     if (currentDifficulty === 'easy') {
@@ -214,7 +201,7 @@ function update(currentTime) {
     } else if (currentDifficulty === 'hard') {
         highscore = highscoreHard;
     }
-
+    
     // Define o tamanho da fonte para "MAIOR PONTUAÇÃO"
     context.font = "30px 'handjet', sans-serif"; // Use a fonte personalizada
     context.fillText("MAIOR PONTUAÇÃO", boardWidth / 2, 550);
@@ -223,11 +210,11 @@ function update(currentTime) {
     context.strokeStyle = "black";
     context.lineWidth = 2;
     context.strokeText("MAIOR PONTUAÇÃO", boardWidth / 2, 550);
-
+    
     // Configura o alinhamento do texto para centralizado
     context.font = "45px 'handjet', sans-serif"; // Use a fonte personalizada
     context.textAlign = "center";
-
+    
     // Desenha o highscore centralizado
     context.lineWidth = 4;
     context.strokeText(highscore, boardWidth / 2, 600);

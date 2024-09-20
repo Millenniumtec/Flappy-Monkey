@@ -7,15 +7,16 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url("./flappyMenu.jpg"); /* Adiciona a imagem de fundo ao menu */
+    background-image: url("images/flappyMenu.jpg"); /* Adiciona a imagem de fundo ao menu */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
+
 #board {
     font-family: 'Handjet', sans-serif;
-    background-image: url("backgroundDay.png");
+    background-image: url("images/backgroundDay.png");
     background-size: cover;
     height: 96.3vh;
     display: block;
