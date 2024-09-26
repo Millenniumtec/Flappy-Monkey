@@ -31,10 +31,12 @@ body {
     touch-action: manipulation; /* Adiciona suporte para manipulação de toque */
 }
 
+
+
 .volume-control {
     position: absolute;
     top: 50%;
-    right: 1rem;
+    right: 32%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
@@ -49,7 +51,6 @@ body {
     width: 8px;
     height: 150px;
     margin-bottom: 70vh;
-    margin-right: 85vh;
 }
 
 #logo {
