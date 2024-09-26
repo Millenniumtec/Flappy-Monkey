@@ -13,6 +13,9 @@ body {
     background-repeat: no-repeat;
 }
 
+#game-container {
+    position: relative;
+}
 
 #board {
     font-family: 'Handjet', sans-serif;
@@ -26,6 +29,27 @@ body {
     border: 3px rgba(0, 0, 0, 0.5) solid;
     box-shadow: 0 0px 10px rgb(0, 0, 0); /* Adiciona sombra ao canvas */
     touch-action: manipulation; /* Adiciona suporte para manipulação de toque */
+}
+
+.volume-control {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.25rem; /* 20px */
+}
+
+.volume-control input[type="range"] {
+    writing-mode: bt-lr; /* Para navegadores compatíveis */
+    appearance: slider-vertical; /* Define a propriedade padrão para compatibilidade */
+    -webkit-appearance: slider-vertical; /* Para navegadores WebKit */
+    width: 8px;
+    height: 150px;
+    margin-bottom: 70vh;
+    margin-right: 85vh;
 }
 
 #logo {
@@ -76,17 +100,17 @@ body {
     transform: scale(1.05); /* Reduz ligeiramente o tamanho dos botões ao clicar */
 }
 
-#easy:hover{
+#easy:hover {
     background-color: rgb(42, 180, 0);
     transform: scale(1.1);
 }
 
-#medium:hover{
+#medium:hover {
     background-color: rgb(240, 236, 1);
     transform: scale(1.1);
 }
 
-#hard:hover{
+#hard:hover {
     background-color: rgb(201, 2, 2);
     transform: scale(1.1);
 }

@@ -53,16 +53,14 @@ let currentDifficulty = 'easy'; // Dificuldade atual
 
 // Carrega o áudio de colisão
 let collisionSound = new Audio('sounds/collision.mp3');
-collisionSound.volume = 0.2; // Define o volume do som de colisão
 
 // Carrega a música de fundo
 let backgroundMusic = new Audio('sounds/background-music.mp3');
 backgroundMusic.loop = true; // Define a música para tocar em loop
-backgroundMusic.volume = 0.2; // Define o volume da música
 
 // Carrega o som de passagem de cano
 let passPipeSound = new Audio('sounds/passPipe.mp3');
-passPipeSound.volume = 0.2; // Define o volume do som de passagem de cano
+
 
 window.onload = function () {
     board = document.getElementById("board");
@@ -92,7 +90,11 @@ window.onload = function () {
     document.addEventListener("mousedown", moveBird); // Adiciona o event listener para o clique do mouse
 }
 
+
 function startGame(difficulty) {
+    document.getElementById('difficulty-selection').style.display = 'none';
+    document.getElementById('board').style.display = 'block';
+    document.querySelector('.volume-control').style.display = 'flex';
     let velocidadeDificuldade;
 
     // Ajusta a velocidade do jogo com base na dificuldade selecionada
@@ -112,6 +114,14 @@ function startGame(difficulty) {
         velocidadeDificuldade = 900;
         currentDifficulty = 'hard';
     }
+
+        const volumeControl = document.getElementById('volume');
+        volumeControl.addEventListener('input', (event) => {
+        const volume = event.target.value;
+        backgroundMusic.volume = volume;
+        collisionSound.volume = volume;  
+        passPipeSound.volume = volume;   
+    });
 
     // Esconde a seleção de dificuldade e mostra o canvas
     document.getElementById('difficulty-selection').style.display = 'none';
